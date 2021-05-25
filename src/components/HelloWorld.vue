@@ -1,19 +1,28 @@
 <template>
   <h1>{{ msg }}</h1>
-  <button @click="count++">count is: {{ count }}</button>
-  <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
+  <div>{{state.count}}</div>
+  <div>{{state.val}}</div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  data() {
-    return {
-      count: 0
-    }
-  }
+<script setup>
+import { defineProps, reactive } from 'vue'
+
+defineProps({
+  msg: String
+})
+
+const state = reactive({ count: 1, val: 'abc' })
+state.count += 10;
+
+let fn = () => {
+  return (state.count + state.val);
 }
+
+state.val = fn();
 </script>
+
+<style scoped>
+a {
+  color: #42b983;
+}
+</style>
