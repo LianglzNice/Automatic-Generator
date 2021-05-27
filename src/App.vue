@@ -1,12 +1,16 @@
 <template>
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
 </template>
 
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import HelloWorld from './components/HelloWorld.vue';
 
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
+export default{
+  components: {
+    HelloWorld
+  }
+}
+
 </script>
 
 <style>
