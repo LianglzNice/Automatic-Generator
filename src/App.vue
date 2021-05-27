@@ -1,25 +1,21 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <l-main />
 </template>
 
 <script lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
+import LMain from './components/main/index.vue';
 
 export default{
-  components: {
-    HelloWorld
-  }
+  components: { LMain }
 }
 
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  position: relative;
 }
 </style>
