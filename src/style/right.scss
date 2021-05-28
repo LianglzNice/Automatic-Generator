@@ -1,0 +1,37 @@
+.right{
+    width: 260px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    box-shadow: -5px 0 6px rgba(122,122,122,.3);
+    .arrow{
+        width: 40px;
+        height: 16px;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -29px;
+        margin: auto 0;
+        cursor: pointer;
+        background: #fff;
+        transform: rotate(90deg);
+    }
+    .arrow::after{
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #ccc;
+        position: absolute;
+        top: 4px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+}
