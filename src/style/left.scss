@@ -6,6 +6,24 @@
     top: 0;
     z-index: 1;
     box-shadow: 5px 0 6px rgba(122,122,122,.3);
+    ul{
+        padding-top: 60px;
+        padding-bottom: 20px;
+        li{
+            width: 150px;
+            height: 36px;
+            padding-left: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            line-height: 36px;
+            margin: 0 auto;
+            margin-top: 15px;
+            color: #5e6d82;
+            font-size: 12px;
+            background: #ecf8ff;
+            cursor: grab;
+        }
+    }
     .arrow{
         width: 40px;
         height: 16px;

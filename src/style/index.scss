@@ -22,7 +22,7 @@ html,body{
     .rule_lv2{
         width: 4px;
         height: 5px;
-        margin-top: 10px;
+        margin-top: 11px;
         border-right: 1px solid #777;
         float: left;
     }
@@ -45,4 +45,22 @@ html,body{
 }
 .rule_lv1_plus:nth-child(1){
     margin-top: 18px;
+}
+.rule_x_guide{
+    width: 100%;
+    height: 5px;
+    border-top: 1px solid #409eff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: row-resize;
+}
+.rule_y_guide{
+    width: 5px;
+    height: 100%;
+    border-left: 1px solid #409eff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: col-resize;
 }
