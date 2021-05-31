@@ -1,6 +1,6 @@
 <template>
     <div class="screen" @drop="drop($event)" @dragover="allowDrop($event)" :style="{width: screenW + 'px', height: screenH + 'px'}">
-        <component v-for="(item, index) in epComponents" :key="index" :is="item.component" :options="{abc: 123456}"></component>
+        <component v-for="(item, index) in epComponents" :key="index" :is="item.component" :options="options"></component>
     </div>
 </template>
 
@@ -9,6 +9,7 @@ import {reactive, toRefs} from 'vue'
 import { screenW, screenH } from '@/datas/header'
 import { cName } from '@/datas/screen'
 import epOptions from '@/utils/element-plus-options'
+import cmOptions from '@/datas/options'
 
 export default {
     components: (():any => {
@@ -28,10 +29,14 @@ export default {
             epComponents: []
         });
 
+        let options:any = Object.assign(new Object(), cmOptions);
+
         let drop = (event:any):void => {
             event.preventDefault();
 
             data.epComponents.push(getComponent(cName.value));
+            options.style['left'] = event.offsetX + 'px';
+            options.style['top'] = event.offsetY + 'px';
         }
         let allowDrop = (event:any):void => {
             event.preventDefault();
@@ -46,6 +51,7 @@ export default {
         return {
             screenW,screenH,
             drop,allowDrop,
+            options,
             ...toRefs(data)
         }
     }

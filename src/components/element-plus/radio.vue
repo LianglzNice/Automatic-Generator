@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :style="style">
         <el-radio v-model="radio" label="1">备选项</el-radio>
         <el-radio v-model="radio" label="2">备选项</el-radio>
     </div>
@@ -8,11 +8,14 @@
 <script lang="ts">
 import { ref } from 'vue'
 export default {
-    setup(){
+    setup(props:any, context:any){
         let radio = ref<string>('');
 
+        let {style} = context.attrs.options;
+        
         return {
-            radio
+            radio,
+            style
         }
     }
 }
