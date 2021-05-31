@@ -46,7 +46,7 @@ export default {
                 }
             }
             document.onmousemove = ($event) => {
-                $event.preventDefault();
+                //$event.preventDefault();
                 let dom:any = document.getElementsByClassName('rule_guide');
                 
                 for(let i=0; i<dom.length; i++){
@@ -57,7 +57,7 @@ export default {
             }
             document.onmouseup = () => {
                 let dom:any = document.getElementsByClassName('rule_guide');
-                let layer:any = document.getElementById('layer'); 
+                let layer:any = document.getElementById('layer');
 
                 for(let i=0; i<dom.length; i++){
                     dom[i].setAttribute('tagget', 'false');

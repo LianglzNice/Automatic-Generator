@@ -21,6 +21,7 @@
     white-space:nowrap;
     overflow: hidden;
     cursor: default;
+    user-select: none; 
 }
 .rule_y{
     width: 16px;
@@ -28,6 +29,7 @@
     overflow: hidden;
     cursor: default;
     float: left;
+    user-select: none; 
 }
 
 /*screen*/

@@ -45,7 +45,9 @@
     "parserOptions": {
       "parser": "@typescript-eslint/parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/no-unused-components": "off"
+    }
   },
   "browserslist": [
     "> 1%",
