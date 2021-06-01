@@ -85,20 +85,25 @@ export default {
         let createEl = (ele:any, len:any, cla:string):void => {
             let el:HTMLDivElement = ele.value;
             el.innerHTML = '';
-
+            
+            let frag1:DocumentFragment = document.createDocumentFragment();
             for(let i=0; i<len/50; i++){
                 let lv1:HTMLUListElement = document.createElement('ul');
                 lv1.className = cla;
                 lv1.innerHTML = `<div class="rule_num">${i*50}</div>`;
                 
+                let frag2:DocumentFragment = document.createDocumentFragment();
                 for(let j=0; j<9; j++){
                     let lv2:HTMLLIElement = document.createElement('li');
                     lv2.className = 'rule_lv2';
-                    lv1.appendChild(lv2);
+                    frag2.appendChild(lv2);
                 }
-
-                el.appendChild(lv1);
+                
+                lv1.appendChild(frag2);
+                frag1.appendChild(lv1);
             }
+
+            el.appendChild(frag1);
         }
 
         let getGuide = (event:any, type:string):void => {
