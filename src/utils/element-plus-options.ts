@@ -16,13 +16,15 @@ const EPList:term[] = [{
     name: 'button',
     alias: 'LButton',
     component: 'l-button'
-},{
-    value: 2,
-    label: 'Link 文字链接',
-    name: 'link',
-    alias: 'LLink',
-    component: 'l-link'
-},{
+},
+// {
+//     value: 2,
+//     label: 'Link 文字链接',
+//     name: 'link',
+//     alias: 'LLink',
+//     component: 'l-link'
+// },
+{
     value: 3,
     label: 'Radio 单选框',
     name: 'radio',

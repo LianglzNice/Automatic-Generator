@@ -11,6 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { screenW, screenH } from '@/datas/header'
+import { taggetGuide, taggetEPlus } from '@/datas/screen'
 import LScreen from './screen.vue'
 
 export default {
@@ -36,37 +37,27 @@ export default {
             window.onresize = function(){
                 innerH.value = window.innerHeight - 76;
             }
-
-            document.onmousedown = ($event) => {
-                //$event.preventDefault();
-                let {target}:any = $event;
-
-                if(target.className.indexOf("rule_guide") > -1){
-                    target.setAttribute('tagget', 'true');
+            
+            document.onmousemove = (event:any) => {
+                if(taggetGuide.value){
+                    taggetGuide.value.className.indexOf('rule_x_guide') > -1 ? taggetGuide.value.style.top = (event.clientY - 60) + 'px' : taggetGuide.value.style.left = (event.clientX - 200) + 'px';
                 }
-            }
-            document.onmousemove = ($event) => {
-                //$event.preventDefault();
-                let dom:any = document.getElementsByClassName('rule_guide');
-                
-                for(let i=0; i<dom.length; i++){
-                    if(dom[i].getAttribute('tagget') === 'true'){
-                        dom[i].className.indexOf('rule_x_guide') > -1 ? dom[i].style.top = ($event.clientY - 60) + 'px' : dom[i].style.left = ($event.clientX - 200) + 'px';
-                    }
+
+                if(taggetEPlus.value && event.target.id === 'screen'){
+                    taggetEPlus.value.style.top = (event.offsetY) + 'px';
+                    taggetEPlus.value.style.left = (event.offsetX) + 'px';
                 }
             }
             document.onmouseup = () => {
-                let dom:any = document.getElementsByClassName('rule_guide');
+                let dom:any = taggetGuide.value || taggetEPlus.value;
                 let layer:any = document.getElementById('layer');
 
-                for(let i=0; i<dom.length; i++){
-                    dom[i].setAttribute('tagget', 'false');
-                    if(dom[i].className.indexOf('rule_x_guide') > -1){
-                        parseInt(dom[i].style.top) < 16 ? layer.removeChild(dom[i]) : true;
-                    }else{
-                        parseInt(dom[i].style.left) < 16 ? layer.removeChild(dom[i]) : true;
-                    }
+                if(dom && (parseInt(dom.style.top) < 16 || parseInt(dom.style.left) < 16)){
+                    layer.removeChild(dom);
                 }
+
+                taggetGuide.value = null;
+                taggetEPlus.value = null;
             }
         })
 
@@ -121,6 +112,9 @@ export default {
             }else if(type === 'y'){
                 elLine.className = 'rule_guide rule_y_guide';
                 elLine.style.left = (event.clientX - 180) + 'px';
+            }
+            elLine.onmousedown = (event:any):void => {
+                taggetGuide.value = event.target;
             }
 
             let layer:any = document.getElementById('layer');

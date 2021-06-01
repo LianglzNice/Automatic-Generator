@@ -1,11 +1,11 @@
 <template>
-    <div class="screen" @drop="drop($event)" @dragover="allowDrop($event)" :style="{width: screenW + 'px', height: screenH + 'px'}">
+    <div id="screen" class="screen" @drop="drop($event)" @dragover="allowDrop($event)" :style="{width: screenW + 'px', height: screenH + 'px'}">
         <component v-for="(item, index) in epComponents" :key="index" :is="item.component" :options="options"></component>
     </div>
 </template>
 
 <script lang="ts">
-import {reactive, toRefs} from 'vue'
+import { reactive, toRefs} from 'vue'
 import { screenW, screenH } from '@/datas/header'
 import { cName } from '@/datas/screen'
 import epOptions from '@/utils/element-plus-options'
@@ -19,7 +19,6 @@ export default {
                 obj[item.alias] = require(`@/components/element-plus/${item.name}.vue`).default;
             }catch(err){
                 obj[item.alias] = {};
-                console.log(err);
             }
         }
         return obj
