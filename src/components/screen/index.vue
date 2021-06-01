@@ -34,7 +34,7 @@ export default {
             layerW.value = (document.getElementById('layer') as any).offsetWidth;
             rulexToScreen();
 
-            window.onresize = function(){
+            window.onresize = () => {
                 innerH.value = window.innerHeight - 76;
             }
             
