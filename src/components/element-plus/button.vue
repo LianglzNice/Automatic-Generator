@@ -5,15 +5,12 @@
 </template>
 
 <script lang="ts">
-import { taggetEPlus } from '@/datas/screen'
+import { mouseDown } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
         let {style} = context.attrs.options;
 
-        let mouseDown = (event:any):void => {
-            taggetEPlus.value = event.target.offsetParent;
-        }
         return {
             style,
             mouseDown

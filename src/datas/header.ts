@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 
-const screenW = ref<number>(1200),
-    screenH = ref<number>(800);
+const screenW = ref<number>(1400),
+    screenH = ref<number>(850);
 
 export {
     screenW,

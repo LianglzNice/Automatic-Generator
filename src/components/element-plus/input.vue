@@ -1,7 +1,6 @@
 <template>
     <div class="eplus" :style="style" @mousedown="mouseDown($event)">
-        <el-radio v-model="radio" label="1">备选项</el-radio>
-        <el-radio v-model="radio" label="2">备选项</el-radio>
+        <el-input v-model="input" placeholder="请输入内容"></el-input>
     </div>
 </template>
 
@@ -12,11 +11,11 @@ import { mouseDown } from '@/utils/common'
 export default {
     setup(props:any, context:any){
         let {style} = context.attrs.options;
-        let radio = ref<string>('');
-        
+        let input = ref<number|string>('');
+
         return {
-            radio,
             style,
+            input,
             mouseDown
         }
     }

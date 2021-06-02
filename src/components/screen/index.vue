@@ -1,6 +1,6 @@
 <template>
     <div class="outer_layer" id="layer">
-        <el-scrollbar class="scrollbar">
+        <el-scrollbar ref="scrollbar" class="scrollbar" @scroll="getScroll">
             <div class="rule_x" ref="ruleX" @mousedown="getGuide($event, 'x')"></div>
             <div class="rule_y" ref="ruleY" @mousedown="getGuide($event, 'y')" :style="{ height : screenH > innerH ? screenH+'px' : innerH+'px'}"></div>
             <l-screen />
@@ -21,8 +21,11 @@ export default {
     setup(){
         let ruleX = ref<any>(null),
             ruleY = ref<any>(null),
+            scrollbar = ref<any>(null),
             innerH = ref<number|string>(window.innerHeight - 76),
-            layerW = ref<number>(0);
+            layerW = ref<number>(0),
+            scrollTop = ref<number>(0);
+            
         
         let timeout:any;
 
@@ -43,9 +46,12 @@ export default {
                     taggetGuide.value.className.indexOf('rule_x_guide') > -1 ? taggetGuide.value.style.top = (event.clientY - 60) + 'px' : taggetGuide.value.style.left = (event.clientX - 200) + 'px';
                 }
 
-                if(taggetEPlus.value && event.target.id === 'screen'){
-                    taggetEPlus.value.style.top = (event.offsetY) + 'px';
-                    taggetEPlus.value.style.left = (event.offsetX) + 'px';
+                if(taggetEPlus.value){ 
+                    //taggetEPlus.value && event.target.id === 'screen'
+                    //taggetEPlus.value.style.left = (event.offsetX) + 'px';
+                    let screen:any = document.getElementById('screen');
+                    taggetEPlus.value.style.top = (event.clientY + scrollTop.value - taggetEPlus.y - 76) + 'px';
+                    taggetEPlus.value.style.left = (event.clientX - screen.offsetLeft - taggetEPlus.x - 200) + 'px';
                 }
             }
             document.onmouseup = () => {
@@ -58,11 +64,14 @@ export default {
 
                 taggetGuide.value = null;
                 taggetEPlus.value = null;
+                taggetEPlus.x = 0;
+                taggetEPlus.y = 0;
             }
         })
 
         //添加监听
         watch([screenW, screenH, innerH], () => {
+            if(screenW.value > layerW.value) screenW.value = layerW.value - 32;
             changeRuleHeight();
             rulexToScreen();
         })
@@ -126,11 +135,15 @@ export default {
             layer.appendChild(elLine);
         }
 
+        let getScroll = () => {
+            scrollTop.value = scrollbar.value.wrap.scrollTop;
+        }
+
         return {
-            ruleX,ruleY,
+            ruleX,ruleY,scrollbar,
             screenW,screenH,
-            innerH,
-            getGuide
+            innerH,scrollTop,
+            getGuide,getScroll
         }
     }
 }
