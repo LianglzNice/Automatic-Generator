@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)">
         <el-radio v-model="radio" label="1">备选项</el-radio>
         <el-radio v-model="radio" label="2">备选项</el-radio>
     </div>
@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { ref } from 'vue'
-import { mouseDown } from '@/utils/common'
+import { mouseDown,deleteCom } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
@@ -17,8 +17,13 @@ export default {
         return {
             radio,
             style,
-            mouseDown
+            mouseDown,
+            deleteCom
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    @import '@/style/element-plus';
+</style>

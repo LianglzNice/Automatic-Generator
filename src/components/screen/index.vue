@@ -46,7 +46,7 @@ export default {
                     taggetGuide.value.className.indexOf('rule_x_guide') > -1 ? taggetGuide.value.style.top = (event.clientY - 60) + 'px' : taggetGuide.value.style.left = (event.clientX - 200) + 'px';
                 }
 
-                if(taggetEPlus.value){ 
+                if(taggetEPlus.value){
                     //taggetEPlus.value && event.target.id === 'screen'
                     //taggetEPlus.value.style.left = (event.offsetX) + 'px';
                     let screen:any = document.getElementById('screen');

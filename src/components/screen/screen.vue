@@ -1,5 +1,5 @@
 <template>
-    <div id="screen" class="screen" @drop="drop($event)" @dragover="allowDrop($event)" :style="{width: screenW + 'px', height: screenH + 'px'}">
+    <div id="screen" class="screen" @drop="drop($event)" @dragover="allowDrop($event)" @click="handleScreen($event)" :style="{width: screenW + 'px', height: screenH + 'px'}">
         <component v-for="(item, index) in epComponents" :key="index" :is="item.component" :options="options"></component>
     </div>
 </template>
@@ -8,6 +8,8 @@
 import { reactive, toRefs} from 'vue'
 import { screenW, screenH } from '@/datas/header'
 import { cName } from '@/datas/screen'
+import { recoveryEplus } from '@/utils/common'
+
 import epOptions from '@/utils/element-plus-options'
 import cmOptions from '@/datas/options'
 
@@ -40,6 +42,14 @@ export default {
         let allowDrop = (event:any):void => {
             event.preventDefault();
         }
+        let handleScreen = (event:any):void => {
+            for(let item of event.path){
+                if(item.className === 'eplus' || item.className === 'eplus active'){
+                    return;
+                }
+            }
+            recoveryEplus(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w']);
+        }
         let getComponent = (name:string):any => {
             for(let item of epOptions){
                 if(item.name === name){
@@ -49,7 +59,7 @@ export default {
         }
         return {
             screenW,screenH,
-            drop,allowDrop,
+            drop,allowDrop,handleScreen,
             options,
             ...toRefs(data)
         }

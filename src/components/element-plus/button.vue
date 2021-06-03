@@ -1,11 +1,11 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)">
         <el-button>默认按钮</el-button>
     </div>
 </template>
 
 <script lang="ts">
-import { mouseDown } from '@/utils/common'
+import { mouseDown,deleteCom } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
@@ -13,8 +13,13 @@ export default {
 
         return {
             style,
-            mouseDown
+            mouseDown,
+            deleteCom
         }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    @import '@/style/element-plus';
+</style>
