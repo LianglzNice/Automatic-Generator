@@ -52,6 +52,14 @@ export default {
                     let screen:any = document.getElementById('screen');
                     taggetEPlus.value.style.top = (event.clientY + scrollTop.value - taggetEPlus.y - 76) + 'px';
                     taggetEPlus.value.style.left = (event.clientX - screen.offsetLeft - taggetEPlus.x - 200) + 'px';
+                    
+                    let {left, top} = taggetEPlus.value.style;
+                    left = parseInt(left);
+                    top = parseInt(top);
+                    let right = left + taggetEPlus.value.offsetWidth;
+                    let bottom = top + taggetEPlus.value.offsetHeight;
+                    console.log(document.getElementsByClassName('rule_guide'));
+                    console.log(left, top, right, bottom);
                 }
             }
             document.onmouseup = () => {
