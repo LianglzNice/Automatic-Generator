@@ -38,8 +38,13 @@ const mouseDown = (event:any):void => {
 const deleteCom = (event:any):void => {
     event.currentTarget.remove();
 }
+
+const handleComponent = (event:any):void => {
+    console.log(event);
+}
 export {
     recoveryEplus,
     mouseDown,
-    deleteCom
+    deleteCom,
+    handleComponent
 }

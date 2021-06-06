@@ -4,6 +4,11 @@
 .el-link--inner{
     user-select: none;
 }
+.form .el-form-item__label{
+    padding-bottom: 0;
+}
+
+
 //
 .eplus, .eplus *{
     cursor: move;

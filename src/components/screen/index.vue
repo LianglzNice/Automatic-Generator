@@ -26,8 +26,10 @@ export default {
             layerW = ref<number>(0),
             scrollTop = ref<number>(0);
             
-        
         let timeout:any;
+        let isGetLine:boolean = true;
+        let xLine:any;
+        let yLine:any;
 
         onMounted(() => {
             //横标尺偷个懒，直接设置1920
@@ -52,14 +54,7 @@ export default {
                     let screen:any = document.getElementById('screen');
                     taggetEPlus.value.style.top = (event.clientY + scrollTop.value - taggetEPlus.y - 76) + 'px';
                     taggetEPlus.value.style.left = (event.clientX - screen.offsetLeft - taggetEPlus.x - 200) + 'px';
-                    
-                    let {left, top} = taggetEPlus.value.style;
-                    left = parseInt(left);
-                    top = parseInt(top);
-                    let right = left + taggetEPlus.value.offsetWidth;
-                    let bottom = top + taggetEPlus.value.offsetHeight;
-                    console.log(document.getElementsByClassName('rule_guide'));
-                    console.log(left, top, right, bottom);
+                    toAdsorb();
                 }
             }
             document.onmouseup = () => {
@@ -145,6 +140,39 @@ export default {
 
         let getScroll = () => {
             scrollTop.value = scrollbar.value.wrap.scrollTop;
+        }
+
+        let toAdsorb = () => {
+            let {left, top}:any = taggetEPlus.value.style;
+            left = parseInt(left);
+            top = parseInt(top);
+            let right:number = left + taggetEPlus.value.offsetWidth;
+            let bottom:number = top + taggetEPlus.value.offsetHeight;
+            
+            let num:number = (layerW.value - screenW.value) / 2;
+
+            if(isGetLine){
+                xLine = document.getElementsByClassName('rule_x_guide');
+                yLine = document.getElementsByClassName('rule_y_guide');
+                isGetLine = false;
+                setTimeout(() => {
+                    isGetLine = true;
+                }, 1000)
+            }
+
+            for(let item of xLine){
+                let xl:any = document.defaultView?.getComputedStyle(item,null).top;
+                xl = parseInt(xl);
+                Math.abs(top + 16 - parseInt(xl)) < 6 ? taggetEPlus.value.style.top = (xl - 16) + 'px'  : true;
+                Math.abs(bottom + 16 - parseInt(xl)) < 6 ? taggetEPlus.value.style.top = (xl - 16 - taggetEPlus.value.offsetHeight) + 'px' : true;
+            }
+
+            for(let item of yLine){
+                let yl:any = document.defaultView?.getComputedStyle(item, null).left;
+                yl = parseInt(yl);
+                Math.abs(left + num - yl) < 6 ? taggetEPlus.value.style.left = (yl - num) + 'px' : true;
+                Math.abs(right + num - yl) < 6 ? taggetEPlus.value.style.left = (yl - num - taggetEPlus.value.offsetWidth) + 'px' : true;
+            }
         }
 
         return {

@@ -8,10 +8,11 @@
 import { reactive, toRefs} from 'vue'
 import { screenW, screenH } from '@/datas/header'
 import { cName } from '@/datas/screen'
-import { recoveryEplus } from '@/utils/common'
-
-import epOptions from '@/utils/element-plus-options'
 import cmOptions from '@/datas/options'
+
+import { recoveryEplus } from '@/utils/common'
+import epOptions from '@/utils/element-plus-options'
+
 
 export default {
     components: (():any => {
