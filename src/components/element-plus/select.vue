@@ -17,7 +17,7 @@ import { reactive,ref,toRefs } from 'vue';
 
 export default {
     setup(props:any, context:any){
-        let {style} = context.attrs.options;
+        let style = context.attrs.options;
 
         let value = ref<number>(1);
 

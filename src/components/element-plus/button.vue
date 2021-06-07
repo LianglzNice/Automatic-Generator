@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)" @click="handleComponent($event)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)" @click="handleComponent($event, 'button')">
         <el-button
             v-bind="attributes"
         >默认按钮</el-button>
@@ -12,7 +12,7 @@ import epOptions from '@/utils/element-plus-options'
 
 export default {
     setup(props:any, context:any){
-        let {style} = context.attrs.options;
+        let style = context.attrs.options;
         
         let getComponentOptions = (name: string):any => {
             let attributes:any, obj:any = {};

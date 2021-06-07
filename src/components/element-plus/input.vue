@@ -10,7 +10,7 @@ import { mouseDown } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let {style} = context.attrs.options;
+        let style = context.attrs.options;
         let input = ref<number|string>('');
 
         return {

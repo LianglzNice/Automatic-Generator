@@ -1,14 +1,12 @@
 <template>
     <div id="screen" class="screen" @drop="drop($event)" @dragover="allowDrop($event)" @click="handleScreen($event)" :style="{width: screenW + 'px', height: screenH + 'px'}">
-        <component v-for="(item, index) in epComponents" :key="index" :is="item.component" :options="options"></component>
+        <component v-for="(item, index) in epComponentsList" :key="index" :is="item.component" :options="style"></component>
     </div>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs} from 'vue'
 import { screenW, screenH } from '@/datas/header'
-import { cName } from '@/datas/screen'
-import cmOptions from '@/datas/options'
+import { cName, epComponentsList } from '@/datas/screen'
 
 import { recoveryEplus } from '@/utils/common'
 import epOptions from '@/utils/element-plus-options'
@@ -27,18 +25,18 @@ export default {
         return obj
     })(),
     setup(){
-        let data = reactive<any>({
-            epComponents: []
-        });
-
-        let options:any = Object.assign(new Object(), cmOptions);
+        let style:any = {
+            position: 'absolute',
+            left: '',
+            top: ''
+        }
 
         let drop = (event:any):void => {
             event.preventDefault();
 
-            data.epComponents.push(getComponent(cName.value));
-            options.style['left'] = event.offsetX + 'px';
-            options.style['top'] = event.offsetY + 'px';
+            epComponentsList.push(getComponent(cName.value));
+            style['left'] = event.offsetX + 'px';
+            style['top'] = event.offsetY + 'px';
         }
         let allowDrop = (event:any):void => {
             event.preventDefault();
@@ -61,8 +59,8 @@ export default {
         return {
             screenW,screenH,
             drop,allowDrop,handleScreen,
-            options,
-            ...toRefs(data)
+            style,
+            epComponentsList
         }
     }
 }

@@ -39,8 +39,8 @@ const deleteCom = (event:any):void => {
     event.currentTarget.remove();
 }
 
-const handleComponent = (event:any):void => {
-    console.log(event);
+const handleComponent = (event:any, name:string):void => {
+    console.log(event, name);
 }
 export {
     recoveryEplus,

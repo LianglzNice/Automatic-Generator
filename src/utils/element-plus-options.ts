@@ -20,7 +20,7 @@ const EPList:term[] = [{
     attributes: {
         size: {value: '', type: 'select'},
         type: {value: '', type: 'select'},
-        plain: {value: false, type: 'radio'},
+        plain: {value: false, type: 'radio'}
     }
 },
 // {

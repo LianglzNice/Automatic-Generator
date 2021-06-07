@@ -11,7 +11,7 @@ import { mouseDown,deleteCom } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let {style} = context.attrs.options;
+        let style = context.attrs.options;
         let radio = ref<string>('');
         
         return {

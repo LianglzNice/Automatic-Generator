@@ -15,5 +15,6 @@ const taggetEPlus = reactive<EPlus>({
     y: 0
 })
 
+const epComponentsList = reactive<any>([]);
 
-export {cName, taggetGuide, taggetEPlus}
+export {cName, taggetGuide, taggetEPlus, epComponentsList}
