@@ -1,33 +1,37 @@
 <template>
     <el-form class="form" :label-position="'top'" label-width="80px" :model="formData">
-        <el-form-item label="宽度">
+        <el-form-item v-for="(item, index) in formKeys" :key="index" label="宽度">
             <el-input v-model="formData.width"><template #append>px</template></el-input>
-        </el-form-item>
-        <el-form-item label="高度">
-            <el-input v-model="formData.height"><template #append>px</template></el-input>
-        </el-form-item>
-        <el-form-item label="透明度">
-            <el-input v-model="formData.opacity"></el-input>
         </el-form-item>
     </el-form>
 </template>
 <script lang="ts">
-import { reactive } from 'vue'
+import { reactive, toRefs, watch } from 'vue'
+import { cType } from '@/datas/screen'
+import epOptions from '@/utils/element-plus-options'
+
 export default {
     setup(){
-        interface form{
-            width: number|string,
-            height: number|string,
-            opacity: number|string
-        }
-        let formData = reactive<form>({
-            width: '',
-            height: '',
-            opacity: ''
+        let data = reactive<any>({
+            formData: {},
+            formKeys: []
         })
 
+        watch(cType, (val) => {
+            data.formData = getAttributes(val);
+            data.formKeys = Object.keys(getAttributes(val));
+        })
+
+        let getAttributes = (name:string):any => {
+            for(let item of epOptions){
+                if(item.name === name){
+                    return item.attributes
+                }
+            }
+        }
+
         return{
-            formData
+            ...toRefs(data)
         }
     }
 }

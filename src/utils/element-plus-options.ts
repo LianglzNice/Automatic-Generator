@@ -19,7 +19,7 @@ const EPList:term[] = [{
     component: 'l-button',
     attributes: {
         size: {value: '', type: 'select'},
-        type: {value: '', type: 'select'},
+        type: {value: null, type: 'select'},
         plain: {value: false, type: 'radio'}
     }
 },
@@ -51,7 +51,9 @@ const EPList:term[] = [{
     name: 'input',
     alias: 'LInput',
     component: 'l-input',
-    attributes: {}
+    attributes: {
+        size: {value: '', type: 'select'}
+    }
 },{
     value: 6,
     label: 'Select 选择器',
