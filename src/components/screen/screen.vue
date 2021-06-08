@@ -1,6 +1,6 @@
 <template>
     <div id="screen" class="screen" @drop="drop($event)" @dragover="allowDrop($event)" @click="handleScreen($event)" :style="{width: screenW + 'px', height: screenH + 'px'}">
-        <component v-for="(item, index) in epComponentsList" :key="index" :is="item.component" :options="style"></component>
+        <component v-for="(item, index) in epComponentsList" :key="index" :is="item.component" :options="item"></component>
     </div>
 </template>
 
@@ -25,18 +25,14 @@ export default {
         return obj
     })(),
     setup(){
-        let style:any = {
-            position: 'absolute',
-            left: '',
-            top: ''
-        }
-
         let drop = (event:any):void => {
             event.preventDefault();
 
-            epComponentsList.push(getComponent(cName.value));
-            style['left'] = event.offsetX + 'px';
-            style['top'] = event.offsetY + 'px';
+            let item = getComponent(cName.value);
+            item.style['left'] = event.offsetX + 'px';
+            item.style['top'] = event.offsetY + 'px';
+
+            epComponentsList.push(item);
         }
         let allowDrop = (event:any):void => {
             event.preventDefault();
@@ -59,7 +55,6 @@ export default {
         return {
             screenW,screenH,
             drop,allowDrop,handleScreen,
-            style,
             epComponentsList
         }
     }

@@ -16,7 +16,8 @@ import {
 
 export default {
     setup(props:any, context:any){
-        let style = context.attrs.options;
+        let style = Object.assign({}, context.attrs.options.style);
+        
         let input = ref<number|string>('');
 
         let attributes:any = getComponentOptions('button');

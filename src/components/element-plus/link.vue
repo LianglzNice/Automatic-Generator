@@ -9,7 +9,7 @@ import { mouseDown } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let style = context.attrs.options;
+        let style = Object.assign({}, context.attrs.options.style);
 
         return {
             style,

@@ -8,6 +8,7 @@ interface term{
     name: string,
     alias: string,
     component: string,
+    style: any,
     attributes: any
 }
 
@@ -17,10 +18,11 @@ const EPList:term[] = [{
     name: 'button',
     alias: 'LButton',
     component: 'l-button',
+    style: {left: 0, top: 0},
     attributes: {
-        size: {value: '', type: 'select'},
-        type: {value: null, type: 'select'},
-        plain: {value: false, type: 'radio'}
+        size: {value: '', label: '尺寸', type: 'select'},
+        type: {value: null, label: '类型', type: 'select'},
+        plain: {value: false, label: '朴素按钮', type: 'radio'}
     }
 },
 // {
@@ -29,6 +31,7 @@ const EPList:term[] = [{
 //     name: 'link',
 //     alias: 'LLink',
 //     component: 'l-link',
+//     style: {left: 0, top: 0},
 //     attributes: {}
 // },
 {
@@ -37,6 +40,7 @@ const EPList:term[] = [{
     name: 'radio',
     alias: 'LRadio',
     component: 'l-radio',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 4,
@@ -44,6 +48,7 @@ const EPList:term[] = [{
     name: 'checkbox',
     alias: 'LCheckbox',
     component: 'l-checkbox',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 5,
@@ -51,6 +56,7 @@ const EPList:term[] = [{
     name: 'input',
     alias: 'LInput',
     component: 'l-input',
+    style: {left: 0, top: 0},
     attributes: {
         size: {value: '', type: 'select'}
     }
@@ -60,6 +66,7 @@ const EPList:term[] = [{
     name: 'select',
     alias: 'LSelect',
     component: 'l-select',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 7,
@@ -67,6 +74,7 @@ const EPList:term[] = [{
     name: 'switch',
     alias: 'LSwitch',
     component: 'l-switch',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 8,
@@ -74,6 +82,7 @@ const EPList:term[] = [{
     name: 'timepicker',
     alias: 'LTimepicker',
     component: 'l-timepicker',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 9,
@@ -81,6 +90,7 @@ const EPList:term[] = [{
     name: 'upload',
     alias: 'LUpload',
     component: 'l-upload',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 10,
@@ -88,6 +98,7 @@ const EPList:term[] = [{
     name: 'form',
     alias: 'LForm',
     component: 'l-form',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 11,
@@ -95,6 +106,7 @@ const EPList:term[] = [{
     name: 'table',
     alias: 'LTable',
     component: 'l-table',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 12,
@@ -102,6 +114,7 @@ const EPList:term[] = [{
     name: 'descriptions',
     alias: 'LDescriptions',
     component: 'l-descriptions',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 13,
@@ -109,6 +122,7 @@ const EPList:term[] = [{
     name: 'navmenu',
     alias: 'LNavmenu',
     component: 'l-navmenu',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 14,
@@ -116,6 +130,7 @@ const EPList:term[] = [{
     name: 'tabs',
     alias: 'LTabs',
     component: 'l-tabs',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 15,
@@ -123,6 +138,7 @@ const EPList:term[] = [{
     name: 'carousel',
     alias: 'LCarousel',
     component: 'l-carousel',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 16,
@@ -130,6 +146,7 @@ const EPList:term[] = [{
     name: 'collapse',
     alias: 'LCollapse',
     component: 'l-collapse',
+    style: {left: 0, top: 0},
     attributes: {}
 },{
     value: 17,
@@ -137,6 +154,7 @@ const EPList:term[] = [{
     name: 'drawer',
     alias: 'LDrawer',
     component: 'l-drawer',
+    style: {left: 0, top: 0},
     attributes: {}
 }]
 

@@ -9,7 +9,10 @@
 }
 
 
-//
+//组件外框样式
 .eplus, .eplus *{
     cursor: move;
+}
+.eplus{
+    position: absolute;
 }

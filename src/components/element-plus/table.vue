@@ -25,7 +25,7 @@ import { reactive,toRefs } from 'vue';
 
 export default {
     setup(props:any, context:any){
-        let style = context.attrs.options;
+        let style = Object.assign({}, context.attrs.options.style);
 
         interface tableData{
             date: string,

@@ -1,6 +1,6 @@
 <template>
     <el-form class="form" :label-position="'top'" label-width="80px" :model="formData">
-        <el-form-item v-for="(item, index) in formKeys" :key="index" label="宽度">
+        <el-form-item v-for="(item, index) in formKeys" :key="index" :label="formData[item].label">
             <el-input v-model="formData.width"><template #append>px</template></el-input>
         </el-form-item>
     </el-form>

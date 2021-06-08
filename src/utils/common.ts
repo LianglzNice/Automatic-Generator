@@ -16,7 +16,7 @@ const recoveryEplus = (point:string[]):void => {
 }
 
 const mouseDown = (event:any):void => {
-    taggetEPlus.value = event.currentTarget; 
+    taggetEPlus.value = event.currentTarget;
     taggetEPlus.x = event.layerX;
     taggetEPlus.y = event.layerY;
 
