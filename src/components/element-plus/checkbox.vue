@@ -1,19 +1,26 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)">
-        <el-checkbox-group v-model="checkList">
-            <el-checkbox :label="1">复选框 A</el-checkbox>
-            <el-checkbox :label="2">复选框 B</el-checkbox>
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)" @click="handleComponent($event, `checkbox-${count}`, attributes)">
+        <el-checkbox-group v-model="checkList" v-bind="attributes">
+            <component :is="attributes.checkoutType" :border="attributes.border" :label="1">复选框 A</component>
+            <component :is="attributes.checkoutType" :border="attributes.border" :label="2">复选框 B</component>
+            <component :is="attributes.checkoutType" :border="attributes.border" :label="3">复选框 C</component>
         </el-checkbox-group>
     </div>
 </template>
 
 <script lang="ts">
 import { reactive,toRefs } from 'vue'
-import { mouseDown } from '@/utils/common'
+import { 
+    mouseDown,
+    deleteCom,
+    handleComponent
+} from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
         let style = Object.assign({}, context.attrs.options.style);
+        let attributes:any = context.attrs.options.attributes;
+        let count:number = context.attrs.options.count;
 
         interface list{
             checkList: number[]
@@ -23,9 +30,11 @@ export default {
         })
 
         return {
-            style,
+            style,attributes,count,
             ...toRefs(data),
-            mouseDown
+            mouseDown,
+            deleteCom,
+            handleComponent
         }
     }
 }

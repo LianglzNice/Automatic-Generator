@@ -51,7 +51,11 @@ const EPList:term[] = [{
     alias: 'LCheckbox',
     component: 'l-checkbox',
     style: {left: 0, top: 0},
-    attributes: {}
+    attributes: {
+        checkoutType: {value: 'el-checkbox', label: '按钮样式', type: 'select', list: 'checkboxTypeList'},
+        size: {value: '', label: '尺寸', type: 'select', list: 'sizeList'},
+        border: {value: false, label:'是否带有边框', type: 'radio', list: 'ynList'}
+    }
 },{
     value: 5,
     label: 'Input 输入框',

@@ -1,5 +1,6 @@
 <template>
     <el-form class="form" :label-position="'top'" label-width="80px" :model="formData">
+        <p class="title">{{title}}控件</p>
         <el-form-item v-for="(item, index) in Object.keys(formData)" :key="index" :label="formData[item].label">
             <!-- 下拉类型 -->
             <el-select v-if="formData[item].type === 'select'" v-model="privateForm[item]" placeholder="请选择">
@@ -15,7 +16,7 @@
     </el-form>
 </template>
 <script lang="ts">
-import { reactive, toRefs, watch } from 'vue'
+import { ref, reactive, toRefs, watch } from 'vue'
 import { cType, cAttributes } from '@/datas/screen'
 import epOptions from '@/utils/element-plus-options'
 
@@ -46,6 +47,10 @@ export default {
                 inputTypeList: [
                     { value: 'text', label: '文本' },
                     { value: 'textarea', label: '文本域' },
+                ],
+                checkboxTypeList: [
+                    { value: 'el-checkbox', label: '选框模式' },
+                    { value: 'el-checkbox-button', label: '按钮模式'}
                 ]
             }
         })
@@ -55,15 +60,19 @@ export default {
             data.formData = getAttributes((val as any).match(/(\S*)-/)[1]);
         })
 
+        let title = ref<string>('');
+
         let getAttributes = (name:string):any => {
             for(let item of epOptions){
                 if(item.name === name){
+                    title.value = item.label;
                     return item.attributes
                 }
             }
         }
 
         return{
+            title,
             ...toRefs(data)
         }
     }
