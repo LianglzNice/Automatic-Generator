@@ -1,5 +1,4 @@
-import { cType, taggetEPlus } from '@/datas/screen'
-import epOptions from '@/utils/element-plus-options'
+import { cType, cAttributes, taggetEPlus } from '@/datas/screen'
 
 const recoveryEplus = (point:string[]):void => {
     const eplusList:any = document.getElementsByClassName('eplus active');
@@ -36,32 +35,17 @@ const mouseDown = (event:any):void => {
     (document.getElementById('active') as any).appendChild(fragment);
 }
 
-const getComponentOptions = (name: string):any => {
-    let attributes:any;
-    const obj:any = {};
-    for(const item of epOptions){
-        if(item.name === name){
-            attributes = item.attributes;
-            break;
-        }
-    }
-    for(const item in attributes){
-        obj[item] = attributes[item].value;
-    }
-    return obj;
-}
-
 const deleteCom = (event:any):void => {
     event.currentTarget.remove();
 }
 
-const handleComponent = (event:any, name:string):void => {
+const handleComponent = (event:any, name:string, attributes:any):void => {
     cType.value = name;
+    cAttributes.value = attributes;
 }
 export {
     recoveryEplus,
     mouseDown,
     deleteCom,
-    handleComponent,
-    getComponentOptions
+    handleComponent
 }

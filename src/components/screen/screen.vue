@@ -28,9 +28,13 @@ export default {
         let drop = (event:any):void => {
             event.preventDefault();
 
-            let item = getComponent(cName.value);
+            let item:any = Object.assign({}, getComponent(cName.value));
+            let attributes:any = getAttributes(item.attributes);
+
+            item.attributes = attributes;
             item.style['left'] = event.offsetX + 'px';
             item.style['top'] = event.offsetY + 'px';
+            item.count = epComponentsList.length + 1;
 
             epComponentsList.push(item);
         }
@@ -51,6 +55,13 @@ export default {
                     return item
                 }
             }
+        }
+        let getAttributes = (attributes: any):any => {
+            let obj:any = {};
+            for(let item in attributes){
+                obj[item] = attributes[item].value;
+            }
+            return obj;
         }
         return {
             screenW,screenH,

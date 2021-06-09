@@ -20,9 +20,11 @@ const EPList:term[] = [{
     component: 'l-button',
     style: {left: 0, top: 0},
     attributes: {
-        size: {value: '', label: '尺寸', type: 'select'},
-        type: {value: null, label: '类型', type: 'select'},
-        plain: {value: false, label: '朴素按钮', type: 'radio'}
+        value: {value: '按钮', label: '值', type: 'input'},
+        size: {value: '', label: '尺寸', type: 'select', list: 'sizeList'},
+        type: {value: null, label: '类型', type: 'select', list: 'buttonTypeList'},
+        plain: {value: false, label: '朴素按钮', type: 'radio', list: 'ynList'},
+        circle: {value: false, label: '圆形按钮', type: 'radio', list: 'ynList'}
     }
 },
 // {
@@ -58,7 +60,11 @@ const EPList:term[] = [{
     component: 'l-input',
     style: {left: 0, top: 0},
     attributes: {
-        size: {value: '', type: 'select'}
+        size: {value: '', label: '尺寸', type: 'select', list: 'sizeList'},
+        type: {value: null, label: '类型', type: 'select', list: 'inputTypeList'},
+        disabled: {value: false, label: '是否禁用', type: 'radio', list: 'ynList'},
+        clearable: {value: false, label: '是否可以清空', type: 'radio', list: 'ynList'},
+        showPassword: {value: false, label: '是否为密码框', type: 'radio', list: 'ynList'}
     }
 },{
     value: 6,

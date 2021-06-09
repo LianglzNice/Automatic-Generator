@@ -1,8 +1,8 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)" @click="handleComponent($event, 'button')">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)" @click="handleComponent($event, `button-${count}`, attributes)">
         <el-button
             v-bind="attributes"
-        >默认按钮</el-button>
+        >{{attributes.value}}</el-button>
     </div>
 </template>
 
@@ -10,18 +10,17 @@
 import { 
     mouseDown,
     deleteCom,
-    handleComponent,
-    getComponentOptions 
+    handleComponent
 } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
         let style = Object.assign({}, context.attrs.options.style);
-        
-        let attributes:any = getComponentOptions('button');
+        let attributes:any = context.attrs.options.attributes;
+        let count:number = context.attrs.options.count;
 
         return {
-            style, attributes,
+            style, attributes, count,
             mouseDown,
             deleteCom,
             handleComponent
