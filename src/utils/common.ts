@@ -1,4 +1,4 @@
-import { cType, cAttributes, taggetEPlus } from '@/datas/screen'
+import { cType, cCount, cAttributes, taggetEPlus, epComponentsList } from '@/datas/screen'
 
 const recoveryEplus = (point:string[]):void => {
     const eplusList:any = document.getElementsByClassName('eplus active');
@@ -14,8 +14,11 @@ const recoveryEplus = (point:string[]):void => {
     }
 }
 
-const mouseDown = (event:any):void => {
-    taggetEPlus.value = event.currentTarget;
+const mouseDown = (event:any, count:number):void => {
+    for(let i=0; i<epComponentsList.length; i++){
+        if(epComponentsList[i].count === count) cCount.value = i;
+    }
+    taggetEPlus.target = event.currentTarget;
     taggetEPlus.x = event.layerX;
     taggetEPlus.y = event.layerY;
 

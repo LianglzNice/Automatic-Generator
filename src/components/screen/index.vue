@@ -11,7 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { screenW, screenH } from '@/datas/header'
-import { taggetGuide, taggetEPlus } from '@/datas/screen'
+import { cCount, taggetGuide, taggetEPlus, epComponentsList } from '@/datas/screen'
 import LScreen from './screen.vue'
 
 export default {
@@ -48,17 +48,15 @@ export default {
                     taggetGuide.value.className.indexOf('rule_x_guide') > -1 ? taggetGuide.value.style.top = (event.clientY - 60) + 'px' : taggetGuide.value.style.left = (event.clientX - 200) + 'px';
                 }
 
-                if(taggetEPlus.value){
-                    //taggetEPlus.value && event.target.id === 'screen'
-                    //taggetEPlus.value.style.left = (event.offsetX) + 'px';
+                if(taggetEPlus.target){
                     let screen:any = document.getElementById('screen');
-                    taggetEPlus.value.style.top = (event.clientY + scrollTop.value - taggetEPlus.y - 76) + 'px';
-                    taggetEPlus.value.style.left = (event.clientX - screen.offsetLeft - taggetEPlus.x - 200) + 'px';
+                    epComponentsList[cCount.value].style.top = (event.clientY + scrollTop.value - taggetEPlus.y  - 76) + 'px';
+                    epComponentsList[cCount.value].style.left = (event.clientX - screen.offsetLeft - taggetEPlus.x  - 200) + 'px';
                     toAdsorb();
                 }
             }
             document.onmouseup = () => {
-                let dom:any = taggetGuide.value || taggetEPlus.value;
+                let dom:any = taggetGuide.value; // || taggetEPlus.target
                 let layer:any = document.getElementById('layer');
 
                 if(dom && (parseInt(dom.style.top) < 16 || parseInt(dom.style.left) < 16)){
@@ -66,9 +64,7 @@ export default {
                 }
 
                 taggetGuide.value = null;
-                taggetEPlus.value = null;
-                taggetEPlus.x = 0;
-                taggetEPlus.y = 0;
+                taggetEPlus.target = null;
             }
         })
 
@@ -143,11 +139,11 @@ export default {
         }
 
         let toAdsorb = () => {
-            let {left, top}:any = taggetEPlus.value.style;
+            let {left, top}:any = epComponentsList[cCount.value].style;
             left = parseInt(left);
             top = parseInt(top);
-            let right:number = left + taggetEPlus.value.offsetWidth;
-            let bottom:number = top + taggetEPlus.value.offsetHeight;
+            let right:number = left + taggetEPlus.target.offsetWidth;
+            let bottom:number = top + taggetEPlus.target.offsetHeight;
             
             let num:number = (layerW.value - screenW.value) / 2;
 
@@ -163,15 +159,15 @@ export default {
             for(let item of xLine){
                 let xl:any = document.defaultView?.getComputedStyle(item,null).top;
                 xl = parseInt(xl);
-                Math.abs(top + 16 - parseInt(xl)) < 6 ? taggetEPlus.value.style.top = (xl - 16) + 'px'  : true;
-                Math.abs(bottom + 16 - parseInt(xl)) < 6 ? taggetEPlus.value.style.top = (xl - 16 - taggetEPlus.value.offsetHeight) + 'px' : true;
+                Math.abs(top + 16 - parseInt(xl)) < 6 ? epComponentsList[cCount.value].style.top = (xl - 16) + 'px'  : true;
+                Math.abs(bottom + 16 - parseInt(xl)) < 6 ? epComponentsList[cCount.value].style.top = (xl - 16 - taggetEPlus.target.offsetHeight) + 'px' : true;
             }
 
             for(let item of yLine){
                 let yl:any = document.defaultView?.getComputedStyle(item, null).left;
                 yl = parseInt(yl);
-                Math.abs(left + num - yl) < 6 ? taggetEPlus.value.style.left = (yl - num) + 'px' : true;
-                Math.abs(right + num - yl) < 6 ? taggetEPlus.value.style.left = (yl - num - taggetEPlus.value.offsetWidth) + 'px' : true;
+                Math.abs(left + num - yl) < 6 ? epComponentsList[cCount.value].style.left = (yl - num) + 'px' : true;
+                Math.abs(right + num - yl) < 6 ? epComponentsList[cCount.value].style.left = (yl - num - taggetEPlus.target.offsetWidth) + 'px' : true;
             }
         }
 
