@@ -1,6 +1,6 @@
 /**
  * 左侧菜单
- * 代号、标题、名称
+ * 代号、标题、名称等组件配置信息
  */
 interface term{
     value: number,
@@ -12,8 +12,32 @@ interface term{
     attributes: any
 }
 
-const EPList:term[] = [{
+const EPList:term[] = [
+{
     value: 1,
+    label: 'div 盒子',
+    name: 'div',
+    alias: 'LDiv',
+    component: 'l-div',
+    style: {
+        left: 0,
+        top: 0,
+        width: '100px',
+        height: '100px',
+        'border-width': '1px',
+        'border-style': 'solid',
+        'border-color': '#000000'
+    },
+    attributes: {
+        width: {value: '100px', label: '宽度', type: 'input', unit: 'px'},
+        height: {value: '100px', label: '高度', type: 'input', unit: 'px'},
+        'border-width': {value: '1px', label: '边框宽度', type: 'input', unit: 'px'},
+        'border-style': {value: 'solid', label: '边框样式', type: 'select', list: 'borderStyleList'},
+        'border-color': {value: '#000000', label: '边框颜色', type: 'color'}
+    }
+},
+{
+    value: 2,
     label: 'Button 按钮',
     name: 'button',
     alias: 'LButton',
@@ -27,15 +51,6 @@ const EPList:term[] = [{
         circle: {value: false, label: '圆形按钮', type: 'radio', list: 'ynList'}
     }
 },
-// {
-//     value: 2,
-//     label: 'Link 文字链接',
-//     name: 'link',
-//     alias: 'LLink',
-//     component: 'l-link',
-//     style: {left: 0, top: 0},
-//     attributes: {}
-// },
 {
     value: 3,
     label: 'Radio 单选框',
@@ -43,7 +58,12 @@ const EPList:term[] = [{
     alias: 'LRadio',
     component: 'l-radio',
     style: {left: 0, top: 0},
-    attributes: {}
+    attributes: {
+        radioType: {value: 'el-radio', label:'按钮样式', type:'select', list: 'radioTypeList'},
+        size: {value: '', label: '尺寸', type: 'select', list: 'sizeList'},
+        border: {value: false, label:'是否带有边框', type: 'radio', list: 'ynList'},
+        disabled: {value: false, label:'是否禁用', type: 'radio', list: 'ynList'}  
+    }
 },{
     value: 4,
     label: 'Checkbox 多选框',
@@ -54,7 +74,8 @@ const EPList:term[] = [{
     attributes: {
         checkoutType: {value: 'el-checkbox', label: '按钮样式', type: 'select', list: 'checkboxTypeList'},
         size: {value: '', label: '尺寸', type: 'select', list: 'sizeList'},
-        border: {value: false, label:'是否带有边框', type: 'radio', list: 'ynList'}
+        border: {value: false, label:'是否带有边框', type: 'radio', list: 'ynList'},
+        disabled: {value: false, label:'是否禁用', type: 'radio', list: 'ynList'}
     }
 },{
     value: 5,

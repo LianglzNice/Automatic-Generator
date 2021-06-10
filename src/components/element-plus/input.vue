@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)" @click="handleComponent($event, `input-${count}`, attributes)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup="deleteCom($event)" @click="handleComponent($event, `input-${count}`, attributes)">
         <el-input 
             v-bind="attributes"
             v-model="input" placeholder="请输入内容"></el-input>

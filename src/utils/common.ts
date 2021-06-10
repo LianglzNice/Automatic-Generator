@@ -36,7 +36,9 @@ const mouseDown = (event:any):void => {
 }
 
 const deleteCom = (event:any):void => {
-    event.currentTarget.remove();
+    if(event.keyCode === 46){
+        event.currentTarget.remove();
+    }
 }
 
 const handleComponent = (event:any, name:string, attributes:any):void => {

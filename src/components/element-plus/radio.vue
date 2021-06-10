@@ -1,25 +1,32 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)">
-        <el-radio v-model="radio" label="1">备选项</el-radio>
-        <el-radio v-model="radio" label="2">备选项</el-radio>
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup="deleteCom($event)" @click="handleComponent($event, `radio-${count}`, attributes)">
+        <el-radio-group v-model="radio" v-bind="attributes">
+            <component :is="attributes.radioType" :border="attributes.border" :label="1">单选框 A</component>
+            <component :is="attributes.radioType" :border="attributes.border" :label="2">单选框 B</component>
+        </el-radio-group>
     </div>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue'
-import { mouseDown,deleteCom } from '@/utils/common'
+import { 
+    mouseDown,
+    deleteCom,
+    handleComponent
+} from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
         let style = Object.assign({}, context.attrs.options.style);
-        
-        let radio = ref<string>('');
+        let attributes:any = context.attrs.options.attributes;
+        let radio = ref<number>(1);
         
         return {
             radio,
-            style,
+            style,attributes,
             mouseDown,
-            deleteCom
+            deleteCom,
+            handleComponent
         }
     }
 }

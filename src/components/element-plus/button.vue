@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup.delete="deleteCom($event)" @click="handleComponent($event, `button-${count}`, attributes)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event)" @keyup="deleteCom($event)" @click="handleComponent($event, `button-${count}`, attributes)">
         <el-button
             v-bind="attributes"
         >{{attributes.value}}</el-button>
