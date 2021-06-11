@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)">
         <el-select v-model="value" placeholder="请选择">
             <el-option
             v-for="item in options"
@@ -17,7 +17,8 @@ import { reactive,ref,toRefs } from 'vue';
 
 export default {
     setup(props:any, context:any){
-        let style = Object.assign({}, context.attrs.options.style);
+        let style = context.attrs.options.style;
+        let count:number = context.attrs.options.count;
 
         let value = ref<number>(1);
 
@@ -42,7 +43,7 @@ export default {
         })
 
         return {
-            style,
+            style,count,
             value,
             ...toRefs(data),
             mouseDown

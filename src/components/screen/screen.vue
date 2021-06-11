@@ -35,8 +35,8 @@ export default {
             item.style['left'] = event.offsetX + 'px';
             item.style['top'] = event.offsetY + 'px';
             item.count = epComponentsList.length + 1;
-
-            epComponentsList.push(item);
+            //必须使用 JSON.parse(JSON.stringify(item)) 方式，否则每个item之间都会相互影响
+            epComponentsList.push(JSON.parse(JSON.stringify(item)));
         }
         let allowDrop = (event:any):void => {
             event.preventDefault();
@@ -52,7 +52,7 @@ export default {
         let getComponent = (name:string):any => {
             for(let item of epOptions){
                 if(item.name === name){
-                    return item
+                    return item;
                 }
             }
         }

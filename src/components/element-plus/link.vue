@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)">
         <!-- <el-link type="primary">主要链接</el-link> -->
     </div>
 </template>
@@ -9,10 +9,11 @@ import { mouseDown } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let style = Object.assign({}, context.attrs.options.style);
+        let style = context.attrs.options.style;
+        let count:number = context.attrs.options.count;
 
         return {
-            style,
+            style, count,
             mouseDown
         }
     }

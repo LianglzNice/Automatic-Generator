@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)">
         <el-table
             :data="tableData"
             style="width: 100%">
@@ -26,6 +26,7 @@ import { reactive,toRefs } from 'vue';
 export default {
     setup(props:any, context:any){
         let style = Object.assign({}, context.attrs.options.style);
+        let count:number = context.attrs.options.count;
 
         interface tableData{
             date: string,
@@ -43,7 +44,7 @@ export default {
             }]
         })
         return {
-            style,
+            style,count,
             ...toRefs(data),
             mouseDown
         }

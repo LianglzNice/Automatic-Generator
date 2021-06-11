@@ -50,8 +50,8 @@ export default {
 
                 if(taggetEPlus.target){
                     let screen:any = document.getElementById('screen');
-                    epComponentsList[cCount.value].style.top = (event.clientY + scrollTop.value - taggetEPlus.y  - 76) + 'px';
-                    epComponentsList[cCount.value].style.left = (event.clientX - screen.offsetLeft - taggetEPlus.x  - 200) + 'px';
+                    epComponentsList[cCount.value].style.top = (event.clientY + scrollTop.value - taggetEPlus.y - 76) + 'px';
+                    epComponentsList[cCount.value].style.left = (event.clientX - screen.offsetLeft - taggetEPlus.x - 200) + 'px';
                     toAdsorb();
                 }
             }

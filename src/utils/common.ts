@@ -41,6 +41,8 @@ const mouseDown = (event:any, count:number):void => {
 const deleteCom = (event:any):void => {
     if(event.keyCode === 46){
         event.currentTarget.remove();
+        epComponentsList.splice(cCount.value, 1);
+        console.log(epComponentsList);
     }
 }
 
