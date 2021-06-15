@@ -17,7 +17,7 @@ import {
 
 export default {
     setup(props:any, context:any){
-        let style = Object.assign({}, context.attrs.options.style);
+        let style = context.attrs.options.style;
         let attributes:any = context.attrs.options.attributes;
         let count:number = context.attrs.options.count;
         let radio = ref<number>(1);

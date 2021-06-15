@@ -1,5 +1,5 @@
 <template>
-    <div tabindex="0" class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @click="handleComponent($event, `div-${count}`, style)"></div>
+    <div tabindex="0" class="eplus" :style="style" @mousedown="mouseDown($event, count, 'div')" @keyup="deleteCom($event)" @click="handleComponent($event, `div-${count}`, style)"></div>
 </template>
 
 <script lang="ts">

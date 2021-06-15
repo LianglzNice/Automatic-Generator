@@ -14,7 +14,7 @@ const recoveryEplus = (point:string[]):void => {
     }
 }
 
-const mouseDown = (event:any, count:number):void => {
+const mouseDown = (event:any, count:number, type:string):void => {
     for(let i=0; i<epComponentsList.length; i++){
         if(epComponentsList[i].count === count) cCount.value = i;
     }
@@ -24,25 +24,27 @@ const mouseDown = (event:any, count:number):void => {
 
     const point:string[] = ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'];
     recoveryEplus(point);
-
-    event.currentTarget.className = 'eplus active';
-    event.currentTarget.id = "active";
-
-    const fragment:DocumentFragment = document.createDocumentFragment();
-    for(const item of point){
-        const div:HTMLDivElement = document.createElement('div');
-        div.className = 'shape-point-' + item;
-        fragment.appendChild(div);
-    }
     
-    (document.getElementById('active') as any).appendChild(fragment);
+    event.currentTarget.className = 'eplus active';
+    //如果是div就加上8个拖动的标记点
+    //if(type === 'div'){
+        event.currentTarget.id = "active";
+
+        const fragment:DocumentFragment = document.createDocumentFragment();
+        for(const item of point){
+            const div:HTMLDivElement = document.createElement('div');
+            div.className = 'shape-point-' + item;
+            fragment.appendChild(div);
+        }
+        
+        (document.getElementById('active') as any).appendChild(fragment);
+    //}
 }
 
 const deleteCom = (event:any):void => {
     if(event.keyCode === 46){
         event.currentTarget.remove();
         epComponentsList.splice(cCount.value, 1);
-        console.log(epComponentsList);
     }
 }
 
