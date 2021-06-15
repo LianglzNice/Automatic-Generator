@@ -27,7 +27,8 @@ const mouseDown = (event:any, count:number, type:string):void => {
     
     event.currentTarget.className = 'eplus active';
     //如果是div就加上8个拖动的标记点
-    //if(type === 'div'){
+    if(type === 'div'){
+        console.log(type);
         event.currentTarget.id = "active";
 
         const fragment:DocumentFragment = document.createDocumentFragment();
@@ -38,7 +39,7 @@ const mouseDown = (event:any, count:number, type:string):void => {
         }
         
         (document.getElementById('active') as any).appendChild(fragment);
-    //}
+    }
 }
 
 const deleteCom = (event:any):void => {
