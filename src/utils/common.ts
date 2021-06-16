@@ -36,8 +36,7 @@ const mouseDown = (event:any, count:number, type:string):void => {
             const div:HTMLDivElement = document.createElement('div');
             div.className = 'shape-point-' + point[i];
             div.setAttribute('name', pointName[i]);
-            div.onmousedown = event => { shapeDown(event); }
-            div.onmousemove = event => { shapeMove(event, cCount.value); }
+            div.onmousedown = event => { shapeDown(event) }
             fragment.appendChild(div);
         }
         
@@ -60,50 +59,18 @@ const handleComponent = (event:any, name:string, attributes:any):void => {
 //shape相关操作
 const shapeDown = (event:any):void => {
     event.stopPropagation();
-    taggetShape.target = event.currentTarget;
     taggetEPlus.target = event.currentTarget.parentNode;
+    taggetEPlus.x = event.layerX;
+    taggetEPlus.y = event.layerY;
 
-    const {left, top}:any = taggetEPlus.target.style;
-    taggetShape.l = parseInt(left);
-    taggetShape.t = parseInt(top);
-    //实际为元素right
+    const screen:any = document.getElementById('screen');
+    taggetShape.target = event.currentTarget;
+    taggetShape.l = event.clientX - screen.offsetLeft - taggetEPlus.x - (taggetEPlus.target.offsetWidth / 2) - 200;
+    taggetShape.t = event.clientY + scrollTop.value - taggetEPlus.y - (taggetEPlus.target.offsetHeight / 2) - 76;
     taggetShape.r = taggetShape.l + taggetEPlus.target.offsetWidth;
-    //实际为元素bottom
     taggetShape.b = taggetShape.t + taggetEPlus.target.offsetHeight;
 }
-const shapeMove = (event:any, count:number):void => {
-    if(taggetShape.target){
-        console.log(taggetShape);
-        const screen:any = document.getElementById('screen');
-        const name:any = event.currentTarget.getAttribute('name');
 
-        const w:number = taggetEPlus.target.offsetWidth;
-        const h:number = taggetEPlus.target.offsetHeight;
-
-        const arr:any[] = name.split('_');
-        for(const item of arr){
-            switch(item){
-                case 'left':
-                    epComponentsList[cCount.value].style.left = (event.clientX - screen.offsetLeft - 200) + 'px';
-                    epComponentsList[cCount.value].style.right = taggetShape.l + 'px';
-                    break;
-                case 'top':
-                    epComponentsList[cCount.value].style.top = (event.clientY + scrollTop.value - 76) + 'px';
-                    epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
-                    break;
-                case 'right':
-                    epComponentsList[cCount.value].style.right = (event.clientX - screen.offsetLeft - w -  200) + 'px';
-                    epComponentsList[cCount.value].style.left = taggetShape.r + 'px';
-                    break;
-                case 'bottom':
-                    epComponentsList[cCount.value].style.bottom = (event.clientY + scrollTop.value + h - 76) + 'px';
-                    epComponentsList[cCount.value].style.top = taggetShape.t + 'px';
-                    break;
-                default: break;
-            }
-        }
-    }
-}
 export {
     recoveryEplus,
     mouseDown,
