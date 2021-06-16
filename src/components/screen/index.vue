@@ -11,7 +11,7 @@
 <script lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { screenW, screenH } from '@/datas/header'
-import { cCount, taggetGuide, taggetEPlus, epComponentsList } from '@/datas/screen'
+import { scrollTop, cCount, taggetGuide, taggetEPlus, taggetShape, epComponentsList } from '@/datas/screen'
 import LScreen from './screen.vue'
 
 export default {
@@ -23,8 +23,7 @@ export default {
             ruleY = ref<any>(null),
             scrollbar = ref<any>(null),
             innerH = ref<number|string>(window.innerHeight - 76),
-            layerW = ref<number>(0),
-            scrollTop = ref<number>(0);
+            layerW = ref<number>(0);
             
         let timeout:any;
         let isGetLine:boolean = true;
@@ -64,6 +63,7 @@ export default {
                 }
 
                 taggetGuide.value = null;
+                taggetShape.target = null;
                 taggetEPlus.target = null;
             }
         })

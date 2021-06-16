@@ -22,6 +22,8 @@ const EPList:term[] = [
     style: {
         left: 0,
         top: 0,
+        right: 0,
+        bottom: 0,
         width: '100px',
         height: '100px',
         'border-width': '1px',
