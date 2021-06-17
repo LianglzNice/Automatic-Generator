@@ -55,43 +55,61 @@ export default {
                 }
 
                 if(taggetShape.target){
-                    console.log(taggetShape);
                     const screen:any = document.getElementById('screen');
                     const name:any = taggetShape.target.getAttribute('name');
 
                     //const w:number = taggetEPlus.target.offsetWidth;
                     //const h:number = taggetEPlus.target.offsetHeight;
-
-                    const arr:any[] = name.split('_');
-                    for(const item of arr){
-                        switch(item){
-                            case 'left':
-                                epComponentsList[cCount.value].style.width = (taggetShape.r - (event.clientX - screen.offsetLeft - 200)) + 'px';
-                                epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
-                                epComponentsList[cCount.value].style.top = taggetShape.t + 'px';
-                                epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
-                                break;
-                            case 'top':
-                                epComponentsList[cCount.value].style.height = (taggetShape.b - (event.clientY + scrollTop.value - 76)) + 'px';
-                                epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
-                                epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
-                                epComponentsList[cCount.value].style.left = taggetShape.l + 'px';
-                                break;
-                            case 'right':
-                                epComponentsList[cCount.value].style.width = ((event.clientX - screen.offsetLeft - 200) - taggetShape.l) + 'px';
-                                epComponentsList[cCount.value].style.top = taggetShape.t + 'px';
-                                epComponentsList[cCount.value].style.left = taggetShape.l + 'px';
-                                epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
-                                break;
-                            case 'bottom':
-                                epComponentsList[cCount.value].style.height = ((event.clientY + scrollTop.value - 76) - taggetShape.t) + 'px';
-                                epComponentsList[cCount.value].style.top = taggetShape.t + 'px';
-                                epComponentsList[cCount.value].style.left = taggetShape.l + 'px';
-                                epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
-                                console.log(epComponentsList[cCount.value].style.bottom);
-                                break;
-                            default: break;
-                        }
+                    switch(name){
+                        case 'left':
+                            epComponentsList[cCount.value].style.width = (taggetShape.r + taggetShape.w - (event.clientX - screen.offsetLeft - 200)) + 'px';
+                            epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
+                            epComponentsList[cCount.value].style.top = taggetShape.t + 'px';
+                            epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
+                            break;
+                        case 'top':
+                            epComponentsList[cCount.value].style.height = (taggetShape.b + taggetShape.h - (event.clientY + scrollTop.value - 76)) + 'px';
+                            epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
+                            epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
+                            epComponentsList[cCount.value].style.left = taggetShape.l + 'px';
+                            break;
+                        case 'right':
+                            epComponentsList[cCount.value].style.width = ((event.clientX - screen.offsetLeft - 200) - taggetShape.l + taggetShape.w) + 'px';
+                            epComponentsList[cCount.value].style.left = taggetShape.l - taggetShape.w + 'px';
+                            epComponentsList[cCount.value].style.top = taggetShape.t + 'px';
+                            epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
+                            break;
+                        case 'bottom':
+                            epComponentsList[cCount.value].style.height = ((event.clientY + scrollTop.value - 76) - taggetShape.t + taggetShape.h) + 'px';
+                            epComponentsList[cCount.value].style.top = taggetShape.t - taggetShape.h + 'px';
+                            epComponentsList[cCount.value].style.left = taggetShape.l + 'px';
+                            epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
+                            break;
+                        case 'left_top':
+                            epComponentsList[cCount.value].style.width = (taggetShape.r + taggetShape.w - (event.clientX - screen.offsetLeft - 200)) + 'px';
+                            epComponentsList[cCount.value].style.height = (taggetShape.b + taggetShape.h - (event.clientY + scrollTop.value - 76)) + 'px';
+                            epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
+                            epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
+                            break;
+                        case 'top_right':
+                            epComponentsList[cCount.value].style.width = ((event.clientX - screen.offsetLeft - 200) - taggetShape.l + taggetShape.w) + 'px';
+                            epComponentsList[cCount.value].style.height = (taggetShape.b - (event.clientY + scrollTop.value - 76) + taggetShape.h) + 'px';
+                            epComponentsList[cCount.value].style.left = taggetShape.l - taggetShape.w + 'px';
+                            epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
+                            break;
+                        case 'right_bottom':
+                            epComponentsList[cCount.value].style.width = ((event.clientX - screen.offsetLeft - 200) - taggetShape.l + taggetShape.w) + 'px';
+                            epComponentsList[cCount.value].style.height = ((event.clientY + scrollTop.value - 76) - taggetShape.t + taggetShape.h) + 'px';
+                            epComponentsList[cCount.value].style.left = taggetShape.l - taggetShape.w + 'px';
+                            epComponentsList[cCount.value].style.top = taggetShape.t - taggetShape.h + 'px';
+                            break;
+                        case 'bottom_left':
+                            epComponentsList[cCount.value].style.width = (taggetShape.r + taggetShape.w - (event.clientX - screen.offsetLeft - 200)) + 'px';
+                            epComponentsList[cCount.value].style.height = ((event.clientY + scrollTop.value - 76) - taggetShape.t + taggetShape.h) + 'px';
+                            epComponentsList[cCount.value].style.top = taggetShape.t - taggetShape.h + 'px';
+                            epComponentsList[cCount.value].style.right = taggetShape.r + 'px';
+                            break;
+                        default: break;
                     }
                 }
             }

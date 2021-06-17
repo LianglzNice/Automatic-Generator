@@ -13,10 +13,12 @@ const taggetEPlus = reactive<any>({
 });
 const taggetShape = reactive<any>({
     target: null,
+    w: 0,
+    h: 0,
     l: 0,
     t: 0,
     r: 0,
-    b: 0
+    b: 0,
 });
 const epComponentsList = reactive<any>([]);
 const cAttributes = reactive<any>({});

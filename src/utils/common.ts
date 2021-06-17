@@ -65,8 +65,10 @@ const shapeDown = (event:any):void => {
 
     const screen:any = document.getElementById('screen');
     taggetShape.target = event.currentTarget;
-    taggetShape.l = event.clientX - screen.offsetLeft - taggetEPlus.x - (taggetEPlus.target.offsetWidth / 2) - 200;
-    taggetShape.t = event.clientY + scrollTop.value - taggetEPlus.y - (taggetEPlus.target.offsetHeight / 2) - 76;
+    taggetShape.w = taggetEPlus.target.offsetWidth / 2;
+    taggetShape.h = taggetEPlus.target.offsetHeight / 2;
+    taggetShape.l = event.clientX - screen.offsetLeft - taggetEPlus.x - taggetShape.w - 200;
+    taggetShape.t = event.clientY + scrollTop.value - taggetEPlus.y - taggetShape.h - 76;
     taggetShape.r = taggetShape.l + taggetEPlus.target.offsetWidth;
     taggetShape.b = taggetShape.t + taggetEPlus.target.offsetHeight;
 }
