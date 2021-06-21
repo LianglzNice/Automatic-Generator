@@ -40,3 +40,28 @@
     background: #fff;
     position: relative;
 }
+.menu{
+    width: 78px;
+    height: 118px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    border: 1px solid #409EFF;
+    background: #fff;
+    display: none;
+    li{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        font-size:14px;
+        color:#409EFF;
+        text-align:center;
+        cursor: pointer;
+        transition: .3s;
+    }
+    li:hover{
+        background: #409EFF;
+        color: #fff;
+    }
+}

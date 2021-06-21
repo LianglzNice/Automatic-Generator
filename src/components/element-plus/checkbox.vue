@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @click="handleComponent($event, `checkbox-${count}`, attributes)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @contextmenu="constMenu($event)" @click="handleComponent($event, `checkbox-${count}`, attributes)">
         <el-checkbox-group v-model="checkList" v-bind="attributes">
             <component :is="attributes.checkoutType" :border="attributes.border" :label="1">复选框 A</component>
             <component :is="attributes.checkoutType" :border="attributes.border" :label="2">复选框 B</component>
@@ -13,12 +13,13 @@ import { reactive,toRefs } from 'vue'
 import { 
     mouseDown,
     deleteCom,
+    constMenu,
     handleComponent
 } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let style = context.attrs.options.style;
+        let style:any = context.attrs.options.style;
         let attributes:any = context.attrs.options.attributes;
         let count:number = context.attrs.options.count;
 
@@ -34,6 +35,7 @@ export default {
             ...toRefs(data),
             mouseDown,
             deleteCom,
+            constMenu,
             handleComponent
         }
     }

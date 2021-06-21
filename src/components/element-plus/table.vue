@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @contextmenu="constMenu($event)" @click="handleComponent($event, `input-${count}`, attributes)">
         <el-table
             :data="tableData"
             style="width: 100%">
@@ -20,12 +20,17 @@
 </template>
 
 <script lang="ts">
-import { mouseDown } from '@/utils/common'
 import { reactive,toRefs } from 'vue';
+import { 
+    mouseDown,
+    deleteCom,
+    constMenu,
+    handleComponent
+} from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let style = Object.assign({}, context.attrs.options.style);
+        let style:any = context.attrs.options.style;
         let count:number = context.attrs.options.count;
 
         interface tableData{
@@ -46,7 +51,10 @@ export default {
         return {
             style,count,
             ...toRefs(data),
-            mouseDown
+            mouseDown,
+            deleteCom,
+            constMenu,
+            handleComponent
         }
     }
 }

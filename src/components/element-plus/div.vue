@@ -1,12 +1,13 @@
 <template>
-    <div tabindex="0" class="eplus" :style="style" @mousedown="mouseDown($event, count, 'div')" @keyup="deleteCom($event)" @click="handleComponent($event, `div-${count}`, style)"></div>
+    <div tabindex="0" class="eplus" :style="style" @mousedown="mouseDown($event, count, 'div')" @keyup="deleteCom($event)" @contextmenu="constMenu($event)" @click="handleComponent($event, `div-${count}`, style)"></div>
 </template>
 
 <script lang="ts">
 import { 
     mouseDown,
     deleteCom,
-    handleComponent
+    constMenu,
+    handleComponent,
 } from '@/utils/common'
 export default {
     setup(props:any, context:any){
@@ -17,6 +18,7 @@ export default {
             style,count,
             mouseDown,
             deleteCom,
+            constMenu,
             handleComponent
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @contextmenu="constMenu($event)" @click="handleComponent($event, `input-${count}`, attributes)">
         <el-select v-model="value" placeholder="请选择">
             <el-option
             v-for="item in options"
@@ -12,12 +12,17 @@
 </template>
 
 <script lang="ts">
-import { mouseDown } from '@/utils/common'
 import { reactive,ref,toRefs } from 'vue';
+import { 
+    mouseDown,
+    deleteCom,
+    constMenu,
+    handleComponent
+} from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let style = context.attrs.options.style;
+        let style:any = context.attrs.options.style;
         let count:number = context.attrs.options.count;
 
         let value = ref<number>(1);
@@ -46,7 +51,10 @@ export default {
             style,count,
             value,
             ...toRefs(data),
-            mouseDown
+            mouseDown,
+            deleteCom,
+            constMenu,
+            handleComponent
         }
     }
 }

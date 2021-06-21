@@ -41,6 +41,11 @@ export default {
             window.onresize = () => {
                 innerH.value = window.innerHeight - 76;
             }
+
+            document.onclick = () => {
+                const menu:any = document.getElementById('menu');
+                menu.style.display = 'none';
+            }
             
             document.onmousemove = (event:any) => {
                 if(taggetGuide.value){
@@ -93,7 +98,7 @@ export default {
                             break;
                         case 'top_right':
                             epComponentsList[cCount.value].style.width = ((event.clientX - screen.offsetLeft - 200) - taggetShape.l + taggetShape.w) + 'px';
-                            epComponentsList[cCount.value].style.height = (taggetShape.b - (event.clientY + scrollTop.value - 76) + taggetShape.h) + 'px';
+                            epComponentsList[cCount.value].style.height = (taggetShape.b  + taggetShape.h - (event.clientY + scrollTop.value - 76)) + 'px';
                             epComponentsList[cCount.value].style.left = taggetShape.l - taggetShape.w + 'px';
                             epComponentsList[cCount.value].style.bottom = taggetShape.b + 'px';
                             break;

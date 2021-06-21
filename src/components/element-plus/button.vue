@@ -1,5 +1,5 @@
 <template>
-    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @click="handleComponent($event, `button-${count}`, attributes)">
+    <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @contextmenu="constMenu($event)" @click="handleComponent($event, `button-${count}`, attributes)">
         <el-button
             v-bind="attributes"
         >{{attributes.value}}</el-button>
@@ -10,12 +10,13 @@
 import { 
     mouseDown,
     deleteCom,
+    constMenu,
     handleComponent
 } from '@/utils/common'
 
 export default {
     setup(props:any, context:any){
-        let style = context.attrs.options.style;
+        let style:any = context.attrs.options.style;
         let attributes:any = context.attrs.options.attributes;
         let count:number = context.attrs.options.count;
 
@@ -23,6 +24,7 @@ export default {
             style, attributes, count,
             mouseDown,
             deleteCom,
+            constMenu,
             handleComponent
         }
     }

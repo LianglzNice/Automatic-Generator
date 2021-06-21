@@ -16,7 +16,7 @@ const recoveryEplus = (point:string[]):void => {
 
 const mouseDown = (event:any, count:number, type:string):void => {
     for(let i=0; i<epComponentsList.length; i++){
-        if(epComponentsList[i].count === count) cCount.value = i;
+        if(epComponentsList[i].count === count) cCount.value = i
     }
     taggetEPlus.target = event.currentTarget;
     taggetEPlus.x = event.layerX;
@@ -46,7 +46,6 @@ const mouseDown = (event:any, count:number, type:string):void => {
 
 const deleteCom = (event:any):void => {
     if(event.keyCode === 46){
-        event.currentTarget.remove();
         epComponentsList.splice(cCount.value, 1);
     }
 }
@@ -54,6 +53,15 @@ const deleteCom = (event:any):void => {
 const handleComponent = (event:any, name:string, attributes:any):void => {
     cType.value = name;
     cAttributes.value = attributes;
+}
+
+const constMenu = (event:any):void => {
+    event.preventDefault();
+    
+    const menu:any = document.getElementById('menu');
+    menu.style.display = 'block';
+    menu.style.left = event.clientX + 'px';
+    menu.style.top = event.clientY + 'px';
 }
 
 //shape相关操作
@@ -77,5 +85,6 @@ export {
     recoveryEplus,
     mouseDown,
     deleteCom,
+    constMenu,
     handleComponent
 }
