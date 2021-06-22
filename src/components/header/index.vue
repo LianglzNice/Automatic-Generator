@@ -16,11 +16,17 @@ import {
     screenH
 } from '@/datas/header'
 import { epComponentsList } from '@/datas/screen'
+import { getFile } from '@/api/api'
 
 export default {
     setup() {
         let toExport = () => {
-            console.log(epComponentsList);
+            //console.log(epComponentsList);
+            getFile({
+                list: epComponentsList
+            }).then((res:any) => {
+                console.log(res);
+            })
         }
 
         return {
