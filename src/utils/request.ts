@@ -36,19 +36,18 @@ service.interceptors.response.use(
   response => {
     const res = response.data
 
-    if(res.type === 'application/x-download' || res.type === 'application/octet-stream'){
+    if(response.headers['content-type'] === 'application/x-download' || response.headers['content-type'] === 'application/octet-stream'){
       return response
     }
 
     // if the custom code is not 20000, it is judged as an error.
-    if (String(res.error_code).substr(0, 1) !== '2') {
+    if (String(res.code).substr(0, 1) !== '2') {
         ElMessage.closeAll();
         ElMessage({
             showClose: true,
             message: res.msg,
             type: 'warning'
         })
-
       return Promise.reject(new Error(res.msg || 'Error'))
 
     } else {
