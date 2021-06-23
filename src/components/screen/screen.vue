@@ -11,7 +11,6 @@
 </template>
 
 <script lang="ts">
-//import { getCurrentInstance } from "vue"
 import { ref } from 'vue'
 import { screenW, screenH } from '@/datas/header'
 import { cName, cCount, epComponentsList } from '@/datas/screen'
@@ -33,7 +32,6 @@ export default {
         return obj
     })(),
     setup(){
-        //const { ctx: _this }: any = getCurrentInstance();
         let refreshScreen = ref<boolean>(true);
         let count:number = 0;
 
@@ -80,7 +78,6 @@ export default {
             refreshScreen.value = false;
             await epComponentsList.splice(cCount.value, 1);
             refreshScreen.value = true;
-            //_this.$forceUpdate();
         }
         let adjustZIndex = (count:number):void => {
             epComponentsList[cCount.value].style['z-index'] += count;

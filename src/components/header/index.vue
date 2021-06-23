@@ -11,21 +11,37 @@
     </header>
 </template>
 <script lang="ts">
+import { getCurrentInstance } from "vue"
+import { epComponentsList } from '@/datas/screen'
+import { getFile } from '@/api/api'
 import {
     screenW,
     screenH
 } from '@/datas/header'
-import { epComponentsList } from '@/datas/screen'
-import { getFile } from '@/api/api'
 
 export default {
     setup() {
+        //获取上下文 _this 代替 ctx
+        const { ctx:_this }:any = getCurrentInstance();
+
         let toExport = () => {
-            //console.log(epComponentsList);
             getFile({
                 list: epComponentsList
-            }).then((res:any) => {
-                console.log(res);
+            }).then((res:any):void => {
+                if(res.data.msg) {
+                    _this.$msg.message(res.data.msg);
+                }else{
+                    _this.$msg.success('文件生成成功！');
+                    //let blob = new Blob([res.data]);
+                    //let el = document.createElement('a');
+                    //el.style.display = 'none';
+                    //el.href = URL.createObjectURL(blob);   // 创建下载的链接
+                    //el.download = "index.html"
+                    //document.body.appendChild(el);
+                    //el.click();
+                    //el.remove();
+                    //window.URL.revokeObjectURL(el.href);  // 释放掉blob对象
+                }
             })
         }
 
