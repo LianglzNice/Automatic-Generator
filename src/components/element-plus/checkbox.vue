@@ -1,9 +1,9 @@
 <template>
     <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @contextmenu="constMenu($event)" @click="handleComponent($event, `checkbox-${count}`, attributes)">
         <el-checkbox-group v-model="checkList" v-bind="attributes">
-            <component :is="attributes.checkoutType" :border="attributes.border" :label="1">复选框 A</component>
-            <component :is="attributes.checkoutType" :border="attributes.border" :label="2">复选框 B</component>
-            <component :is="attributes.checkoutType" :border="attributes.border" :label="3">复选框 C</component>
+            <component :is="attributes.shapeType" :border="attributes.border" :label="1">复选框 A</component>
+            <component :is="attributes.shapeType" :border="attributes.border" :label="2">复选框 B</component>
+            <component :is="attributes.shapeType" :border="attributes.border" :label="3">复选框 C</component>
         </el-checkbox-group>
     </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
     <div class="eplus" :style="style" @mousedown="mouseDown($event, count)" @keyup="deleteCom($event)" @contextmenu="constMenu($event)" @click="handleComponent($event, `radio-${count}`, attributes)">
         <el-radio-group v-model="radio" v-bind="attributes">
-            <component :is="attributes.radioType" :border="attributes.border" :label="1">单选框 A</component>
-            <component :is="attributes.radioType" :border="attributes.border" :label="2">单选框 B</component>
+            <component :is="attributes.shapeType" :border="attributes.border" :label="1">单选框 A</component>
+            <component :is="attributes.shapeType" :border="attributes.border" :label="2">单选框 B</component>
         </el-radio-group>
     </div>
 </template>
