@@ -8,7 +8,7 @@ interface term{
     name: string,   //名称
     alias: string,  //组件别名
     component: string,  //组件名称
-    hasModel: boolean, //是否包含v-model
+    isModel: boolean, //是否包含v-model
     original: any,   //el-plus原名称
     style: any, //组件样式表
     attributes: any //组件属性
@@ -21,7 +21,7 @@ const EPList:term[] = [
     name: 'div',
     alias: 'LDiv',
     component: 'l-div',
-    hasModel: false,
+    isModel: false,
     original: {
         name: 'div',
     },
@@ -56,7 +56,7 @@ const EPList:term[] = [
     name: 'button',
     alias: 'LButton',
     component: 'l-button',
-    hasModel: false,
+    isModel: false,
     original: {
         name: 'el-button',
     },
@@ -75,7 +75,7 @@ const EPList:term[] = [
     name: 'radio',
     alias: 'LRadio',
     component: 'l-radio',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-radio-group',
         children: { 
@@ -96,7 +96,7 @@ const EPList:term[] = [
     name: 'checkbox',
     alias: 'LCheckbox',
     component: 'l-checkbox',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-checkbox-group',
         children: {
@@ -117,7 +117,7 @@ const EPList:term[] = [
     name: 'input',
     alias: 'LInput',
     component: 'l-input',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-input',
     },
@@ -135,7 +135,7 @@ const EPList:term[] = [
     name: 'select',
     alias: 'LSelect',
     component: 'l-select',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-select',
         children: {
@@ -150,7 +150,7 @@ const EPList:term[] = [
     name: 'switch',
     alias: 'LSwitch',
     component: 'l-switch',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-switch',
     },
@@ -162,7 +162,7 @@ const EPList:term[] = [
     name: 'datetimepicker',
     alias: 'LDatetimepicker',
     component: 'l-datetimepicker',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-date-picker',
     },
@@ -174,7 +174,7 @@ const EPList:term[] = [
     name: 'upload',
     alias: 'LUpload',
     component: 'l-upload',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-upload',
     },
@@ -186,7 +186,7 @@ const EPList:term[] = [
     name: 'form',
     alias: 'LForm',
     component: 'l-form',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-form',
     },
@@ -198,7 +198,7 @@ const EPList:term[] = [
     name: 'table',
     alias: 'LTable',
     component: 'l-table',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-table',
         children: {
@@ -213,7 +213,7 @@ const EPList:term[] = [
     name: 'descriptions',
     alias: 'LDescriptions',
     component: 'l-descriptions',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-descriptions',
     },
@@ -225,7 +225,7 @@ const EPList:term[] = [
     name: 'navmenu',
     alias: 'LNavmenu',
     component: 'l-navmenu',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-navmenu',
     },
@@ -237,7 +237,7 @@ const EPList:term[] = [
     name: 'tabs',
     alias: 'LTabs',
     component: 'l-tabs',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-tabs',
     },
@@ -249,7 +249,7 @@ const EPList:term[] = [
     name: 'carousel',
     alias: 'LCarousel',
     component: 'l-carousel',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-carousel',
     },
@@ -261,7 +261,7 @@ const EPList:term[] = [
     name: 'collapse',
     alias: 'LCollapse',
     component: 'l-collapse',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-collapse',
     },
@@ -273,7 +273,7 @@ const EPList:term[] = [
     name: 'drawer',
     alias: 'LDrawer',
     component: 'l-drawer',
-    hasModel: true,
+    isModel: true,
     original: {
         name: 'el-drawer',
     },
